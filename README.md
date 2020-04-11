@@ -1,3 +1,8 @@
-# restapi-jwt-typescript
+# Typescript REST API JWT
 
-Ejemplo práctico  de Javascript/Typescript donde se hará la creación de una REST API usando Nodejs, Mongodb (a traves de Mongoose) adicionalmente de modulos como bcrypt y passport.
+This is a REST API example using Nodejs, Mongodb, Typescript and JsonWebtoken with Passport.
+
+# Requerimientos
+
+- Mongodb
+- Nodejs/npm
