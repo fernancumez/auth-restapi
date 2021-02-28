@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import User, { IUser } from "../models/user";
 import jwt from "jsonwebtoken";
-import config from "../config/config";
+import config from "../config";
 
 function createToken(user: IUser) {
-  return jwt.sign({ id: user.id, email: user.email }, config.jwtSecret, {
+  return jwt.sign({ id: user.id, email: user.email }, config.JWT_SECRET, {
     expiresIn: 86400,
   });
 }

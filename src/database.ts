@@ -1,23 +1,19 @@
-import mongoose, { ConnectionOptions } from "mongoose";
-import config from "./config/config";
+import { connect, connection, ConnectionOptions } from "mongoose";
+import config from "./config";
 
-const dbOptions: ConnectionOptions = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  user: config.DB.USER,
-  pass: config.DB.PASSWORD,
+export const startConnection = async (): Promise<void> => {
+  try {
+    const connectionOptions: ConnectionOptions = {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+    };
+
+    await connect(config.DATABASE_URL, connectionOptions);
+    console.log("database connected!");
+    console.log(connection.name);
+  } catch (error) {
+    console.error(error);
+  }
 };
-
-mongoose.connect(config.DB.URI, dbOptions);
-
-const connection = mongoose.connection;
-
-connection.once("open", () => {
-  console.log("Mongodb connection stablished");
-});
-
-connection.on("error", (err) => {
-  console.log("Mongodb connection error:", err);
-  process.exit();
-});
