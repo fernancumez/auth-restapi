@@ -1,16 +1,18 @@
-import express, { Express } from "express";
+import express, { Application } from "express";
+import config from "./config";
+import passport from "passport";
 import morgan from "morgan";
 import cors from "cors";
-import passport from "passport";
 
 import passportMiddleware from "./middlewares/passport";
 import specialRoutes from "./routes/special.routes";
+import welcomeRoutes from "./routes/welcome.routes";
 import authRoutes from "./routes/auth.routes";
 
-const app: Express = express();
+const app: Application = express();
 
 // Settings
-app.set("port", process.env.PORT || 3000);
+app.set("port", parseInt(config.PORT));
 
 // Middlewares
 app.use(cors());
@@ -21,11 +23,8 @@ passport.use(passportMiddleware);
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.get("/", (req, res) => {
-  res.send(`the api is at http://localhost:${app.get("port")}`);
-});
-
-app.use(authRoutes);
-app.use(specialRoutes);
+app.use(welcomeRoutes);
+app.use("/api", authRoutes);
+app.use("/api", specialRoutes);
 
 export default app;
