@@ -1,13 +1,9 @@
 import { Router } from "express";
-import passport from "passport";
+import auth from "../middlewares/auth";
+import { special } from "../controllers/special.controllers";
+
 const router = Router();
 
-router.get(
-  "/special",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    res.send("success");
-  }
-);
+router.route("/special").get(auth, special);
 
 export default router;
