@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { signIn, signUp } from "../controllers/auth.controllers";
+import { confirmEmail, signIn, signUp } from "../controllers/auth.controllers";
 import {
   checkDuplicateEmail,
   checkRolesExisted,
@@ -12,7 +12,8 @@ import {
 
 const router = Router();
 
-router.post("/signin", [...validateSignInFields], signIn);
+router.route("/confirm/:token").get(confirmEmail);
+router.route("/signin").post([...validateSignInFields], signIn);
 router
   .route("/signup")
   .post(

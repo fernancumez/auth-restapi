@@ -1,6 +1,7 @@
 import { check } from "express-validator";
 
 export const validateSignUpFields = [
+  check("username", "A username is required").not().isEmpty(),
   check("email", "The email address format is not valid").isEmail(),
   check(
     "password",

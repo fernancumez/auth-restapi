@@ -3,6 +3,10 @@ import { IUser } from "./types/users.types";
 
 const userSchema = new Schema(
   {
+    username: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       unique: true,
@@ -14,7 +18,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-
+    isVerified: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
     roles: [
       {
         type: Schema.Types.ObjectId,
