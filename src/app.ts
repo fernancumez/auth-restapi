@@ -9,11 +9,7 @@ import specialRoutes from "./routes/special.routes";
 import welcomeRoutes from "./routes/welcome.routes";
 import authRoutes from "./routes/auth.routes";
 
-import { createAdmin, createRoles } from "./libs/initialSetup";
-
 const app: Application = express();
-createRoles();
-createAdmin();
 
 // Settings
 app.set("port", parseInt(config.PORT));
