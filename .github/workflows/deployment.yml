@@ -10,7 +10,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-20.04
 
     steps:
@@ -35,6 +35,4 @@ jobs:
         heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
         heroku_email: ${{secrets.HEROKU_EMAIL}}
         branch: master
-        appdir: "dist"
         justlogin: true
-    - run: heroku auth:whoami
