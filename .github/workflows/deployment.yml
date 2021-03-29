@@ -29,7 +29,13 @@ jobs:
       run: npm run build
 
     - name: Copy files
-      run: cp package.json dist
+      run: cp package.json Procfile dist
+
+    - name: View logs
+      run: pwd
+
+    - name: View files
+      run: ls
 
     - name: Deploy
       uses: akhileshns/heroku-deploy@v3.12.12
@@ -37,5 +43,5 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
         heroku_email: ${{secrets.HEROKU_EMAIL}}
-        branch: master
         appdir: dist
+        branch: master
