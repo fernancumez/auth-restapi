@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build": "rimraf dist && tsc",
+    "build": "tsc",
     "watch": "npm run clean && tsc -w",
     "start": "export NODE_ENV=production || SET NODE_ENV=production&& npm run build && node dist/index.js",
     "dev": "export NODE_ENV=production || SET NODE_ENV=development&& nodemon dist/index.js"
