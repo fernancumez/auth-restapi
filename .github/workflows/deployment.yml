@@ -36,3 +36,4 @@ jobs:
         heroku_email: ${{secrets.HEROKU_EMAIL}}
         branch: master
         justlogin: true
+        procfile: "web: npm run start"
